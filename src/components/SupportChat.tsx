@@ -34,6 +34,27 @@ export default function SupportChat({ onClose }: SupportChatProps) {
     e.target.value = '';
   };
 
+  const handlePaste = (e: React.ClipboardEvent) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (const item of items) {
+      if (item.type.startsWith('image/')) {
+        e.preventDefault();
+        const file = item.getAsFile();
+        if (file) { loadImage(file); }
+        return;
+      }
+    }
+  };
+
+  const loadImage = (file: File) => {
+    if (!file.type.startsWith('image/')) return;
+    if (file.size > 4 * 1024 * 1024) { alert('Image too large (max 4 MB)'); return; }
+    const reader = new FileReader();
+    reader.onload = () => { const b = reader.result as string; setPendingImage({ base64: b, mime: file.type, preview: b }); };
+    reader.readAsDataURL(file);
+  };
+
   const sendMessage = async (text: string) => {
     if ((!text.trim() && !pendingImage) || loading) return;
     const userMsg: Message = { id: String(Date.now()), role: 'user', content: text.trim() || (pendingImage ? 'What does this mean?' : ''), imagePreview: pendingImage?.preview };
@@ -118,7 +139,7 @@ export default function SupportChat({ onClose }: SupportChatProps) {
         <form onSubmit={e => { e.preventDefault(); sendMessage(input); }} className="p-3 border-t flex gap-2">
           <button type="button" onClick={() => fileRef.current?.click()} className="text-gray-400 hover:text-blue-600 text-xl px-1" title="Send screenshot">📷</button>
           <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
-          <input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder={pendingImage ? 'What would you like to know?' : 'Describe your issue...'} disabled={loading}
+          <input type="text" value={input} onChange={e => setInput(e.target.value)} onPaste={handlePaste} placeholder={pendingImage ? 'What would you like to know?' : 'Type or paste screenshot (Ctrl+V)...'} disabled={loading}
             className="flex-1 px-3 py-2 border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:outline-none" />
           <button type="submit" disabled={loading || (!input.trim() && !pendingImage)}
             className="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50">Send</button>
