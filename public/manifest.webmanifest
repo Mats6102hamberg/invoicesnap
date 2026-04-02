@@ -1,0 +1,21 @@
+{
+  "name": "InvoiceSnap - Invoices for UK Sole Traders",
+  "short_name": "InvoiceSnap",
+  "description": "Create professional invoices in 60 seconds. HMRC MTD compliant, VAT returns, Companies House ready.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EFF6FF",
+  "theme_color": "#2563EB",
+  "lang": "en-GB",
+  "dir": "ltr",
+  "orientation": "any",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "New Invoice", "short_name": "Invoice", "url": "/?mode=new-invoice" },
+    { "name": "Ask Boris", "short_name": "Boris", "url": "/?mode=boris" }
+  ]
+}
