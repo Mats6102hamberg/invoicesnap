@@ -122,7 +122,7 @@ export default function BorisChat({
       const assistantMsg: Message = {
         id: String(Date.now() + 1),
         role: 'assistant',
-        content: data.ok ? data.reply : 'Sorry, something went wrong. Please try again.',
+        content: data.ok ? (data.answer || data.reply) : 'Sorry, something went wrong. Please try again.',
       };
       setMessages(prev => [...prev, assistantMsg]);
     } catch {

@@ -56,7 +56,7 @@ export default function SupportChat({ onClose }: SupportChatProps) {
       setMessages(prev => [...prev, {
         id: String(Date.now() + 1),
         role: 'assistant',
-        content: data.ok ? data.reply : 'Sorry, an error occurred. Please email support@invoicesnap.co.uk',
+        content: data.ok ? (data.answer || data.reply) : 'Sorry, an error occurred. Please email support@invoicesnap.co.uk',
       }]);
     } catch {
       setMessages(prev => [...prev, {
