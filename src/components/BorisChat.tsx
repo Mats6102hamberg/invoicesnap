@@ -111,9 +111,9 @@ export default function BorisChat({
         },
         body: JSON.stringify({
           action: 'boris.chat',
-          message: text.trim(),
-          language: 'en',
-          context: context === 'business' ? 'invoicesnap' : context,
+          payload: { message: text.trim(),
+            language: 'en',
+            context: context === 'business' ? 'invoicesnap' : context,
         }),
       });
 

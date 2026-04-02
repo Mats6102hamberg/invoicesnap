@@ -46,9 +46,9 @@ export default function SupportChat({ onClose }: SupportChatProps) {
         },
         body: JSON.stringify({
           action: 'boris.chat',
-          message: text.trim(),
-          language: 'en',
-          context: 'support',
+          payload: { message: text.trim(),
+            language: 'en',
+            context: 'support',
         }),
       });
 
