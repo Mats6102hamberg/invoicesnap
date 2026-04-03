@@ -5,6 +5,7 @@ import ReceiptScanner from './ReceiptScanner';
 import RecurringInvoices from './RecurringInvoices';
 import VATReturn from './VATReturn';
 import EInvoice from './EInvoice';
+import TrustScore from './TrustScore';
 import BorisChat from './BorisChat';
 
 interface BusinessHubProps {
@@ -19,6 +20,7 @@ const TABS = [
   { id: 'recurring', label: 'Recurring', icon: '🔄' },
   { id: 'vat', label: 'VAT Return', icon: '🧾' },
   { id: 'einvoice', label: 'E-Invoice', icon: '📄' },
+  { id: 'trustscore', label: 'TrustScore', icon: '🛡️' },
   { id: 'boris', label: 'Boris', icon: '🤖' },
 ] as const;
 
@@ -35,6 +37,7 @@ export default function BusinessHub({ onBack, onNavigate }: BusinessHubProps) {
       case 'recurring': return <RecurringInvoices />;
       case 'vat': return <VATReturn />;
       case 'einvoice': return <EInvoice />;
+      case 'trustscore': return <TrustScore lang="en" />;
       case 'boris': return <BorisChat onBack={() => setActiveTab('dashboard')} />;
       default: return <Dashboard />;
     }
