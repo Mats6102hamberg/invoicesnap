@@ -74,7 +74,7 @@ export default function SupportChat({ onClose }: SupportChatProps) {
           payload: {
             message: userMsg.content,
             language: 'en',
-            context: 'support',
+            context: 'invoicesnap',
             ...(imageData ? { image: imageData.base64, imageMimeType: imageData.mime } : {}),
           },
         }),

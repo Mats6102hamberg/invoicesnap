@@ -112,7 +112,7 @@ export default function BorisChat({
         body: JSON.stringify({
           action: 'boris.chat',
           payload: { message: text.trim(),
-            language: 'en',
+            language: 'en', appId: 'invoicesnap',
             context: context === 'business' ? 'invoicesnap' : context,
         }),
       });
