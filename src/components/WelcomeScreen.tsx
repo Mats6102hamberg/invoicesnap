@@ -184,6 +184,17 @@ export default function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
         </div>
       </div>
 
+      {/* TrustScore Teaser */}
+      <div className="max-w-3xl mx-auto px-4 pb-12">
+        <div className="bg-gradient-to-r from-blue-50 to-white border border-blue-200 rounded-2xl p-6 flex items-start gap-4">
+          <span className="text-3xl">🛡️</span>
+          <div>
+            <h3 className="font-bold text-gray-900 mb-1">TrustScore</h3>
+            <p className="text-sm text-gray-600">Build your payment reliability score. Other InvoiceSnap users can see your rating and choose to do business with you.</p>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <div className="max-w-4xl mx-auto px-4 pb-8 text-center space-y-2">
         <button
