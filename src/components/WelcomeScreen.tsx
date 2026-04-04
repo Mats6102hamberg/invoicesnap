@@ -195,6 +195,51 @@ export default function WelcomeScreen({ onNavigate }: WelcomeScreenProps) {
         </div>
       </div>
 
+      {/* Comparison */}
+      <div className="max-w-4xl mx-auto px-4 pb-12">
+        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">Why InvoiceSnap?</h2>
+        <p className="text-center text-sm text-gray-500 mb-6">More features than FreeAgent – at a fraction of the cost.</p>
+        <div className="overflow-x-auto">
+          <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden text-sm">
+            <thead>
+              <tr className="bg-gray-50 border-b">
+                <th className="text-left px-4 py-3 font-semibold text-gray-700">Feature</th>
+                <th className="px-4 py-3 font-semibold text-blue-600">InvoiceSnap</th>
+                <th className="px-4 py-3 font-semibold text-gray-400">FreeAgent</th>
+                <th className="px-4 py-3 font-semibold text-gray-400">QuickBooks</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {([
+                ['Create invoices', true, true, true],
+                ['AI assistant (Boris)', true, false, false],
+                ['TrustScore', true, false, false],
+                ['MTD VAT returns', true, true, true],
+                ['Receipt scanning', true, true, true],
+                ['Time tracking', true, true, true],
+                ['Recurring invoices', true, true, true],
+                ['Payment reminders', true, true, true],
+                ['PWA / Offline', true, false, false],
+                ['Free plan', true, false, false],
+              ] as [string, boolean, boolean, boolean][]).map(([label, us, c1, c2], i) => (
+                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                  <td className="px-4 py-2.5 text-gray-700">{label}</td>
+                  <td className="px-4 py-2.5 text-center">{us ? <span className="text-green-600 font-bold">✓</span> : <span className="text-gray-300">–</span>}</td>
+                  <td className="px-4 py-2.5 text-center">{c1 ? <span className="text-green-600">✓</span> : <span className="text-gray-300">–</span>}</td>
+                  <td className="px-4 py-2.5 text-center">{c2 ? <span className="text-green-600">✓</span> : <span className="text-gray-300">–</span>}</td>
+                </tr>
+              ))}
+              <tr className="bg-blue-50 border-t-2 border-blue-200">
+                <td className="px-4 py-3 font-bold text-gray-900">Price / month</td>
+                <td className="px-4 py-3 text-center font-bold text-blue-600">from £0</td>
+                <td className="px-4 py-3 text-center text-gray-500">from £14.50</td>
+                <td className="px-4 py-3 text-center text-gray-500">from £12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {/* Footer */}
       <div className="max-w-4xl mx-auto px-4 pb-8 text-center space-y-2">
         <button
