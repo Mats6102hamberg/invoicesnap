@@ -14,7 +14,7 @@ export default function PricingPage({ onBack }: { onBack: () => void }) {
     },
     {
       name: 'Start',
-      price: '\u00a34.90',
+      price: '\u00a37.90',
       period: '/month',
       features: ['Unlimited invoices', '50 Boris questions per month', 'No branding on invoice', 'Invoice list & status tracking', 'PDF download'],
       current: plan === 'START',
@@ -23,9 +23,9 @@ export default function PricingPage({ onBack }: { onBack: () => void }) {
     },
     {
       name: 'Pro',
-      price: '\u00a39.90',
+      price: '\u00a319.90',
       period: '/month',
-      features: ['Everything in Start', 'Unlimited Boris', 'E-invoicing (UBL)', 'VAT Return export', 'Bookkeeping export', 'Priority support'],
+      features: ['Everything in Start', 'Unlimited Boris AI', 'VAT/tax report export', 'Accounting export', 'Priority support'],
       current: plan === 'PRO',
       action: () => openCheckout?.('PRO'),
     },
